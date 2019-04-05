@@ -19,6 +19,8 @@ namespace ContentManagerBFF.Controllers
         [HttpPost]
         public async Task<IEnumerable<Person>> Post([FromBody] Person personModel)
         {
+            var persons = await this.Persons.List();
+            personModel.Id = uint.Parse(persons.Count.ToString());
             await this.Persons.Insert(personModel);
             return await this.Persons.List();
         }
