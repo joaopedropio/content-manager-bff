@@ -26,8 +26,7 @@ namespace ContentManagerBFF.Domain.Repositories
 
         public async Task<IList<Person>> List()
         {
-            var persons = await this.contentClient.Get<Person>();
-            return persons;
+            return await this.contentClient.Get<Person>();
         }
 
         public async Task Remove(uint id)
