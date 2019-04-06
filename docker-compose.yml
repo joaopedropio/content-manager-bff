@@ -1,0 +1,25 @@
+version: '3'
+services:
+  contentapi:
+    image: joaopio/content-api
+    depends_on:
+      - mysql
+    environment:
+      - CONNECTION_STRING=Server=mysql;Database=content;Uid=content;Pwd=content1234
+    networks:
+      - contentapinetwork
+    ports:
+      - "8080:80"
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=content
+      - MYSQL_USER=content
+      - MYSQL_PASSWORD=content1234
+    networks:
+      - contentapinetwork
+    ports:
+      - "3306:3306"
+networks:
+  contentapinetwork:
