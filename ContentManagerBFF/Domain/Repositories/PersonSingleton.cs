@@ -1,4 +1,4 @@
-﻿using ContentManagerBFF.Domain.Models;
+﻿using ContentClient.Models;
 using System.Collections.Generic;
 
 namespace ContentManagerBFF.Domain.Repositories

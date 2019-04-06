@@ -18,6 +18,9 @@ namespace ContentManagerBFF
         public string SFTPHost { get; }
         public string SFTPUsername { get; }
         public string SFTPPassword { get; }
+
+        public string ContentAPIURL { get; }
+
         public int SFTPPort { get; }
 
         public Configuration() : this(new ConfigurationBuilder().AddEnvironmentVariables().Build()) { }
@@ -44,6 +47,9 @@ namespace ContentManagerBFF
             this.SFTPPort = int.Parse(sftpPort);
             this.SFTPUsername = configuration.GetValue<string>("SFTP_USERNAME") ?? "content";
             this.SFTPPassword = configuration.GetValue<string>("SFTP_PASSWORD") ?? "password";
+
+            // Content API
+            this.ContentAPIURL = configuration.GetValue<string>("CONTENT_API_URL") ?? "http://localhost:8080";
         }
     }
 }

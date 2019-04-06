@@ -5,9 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http.Features;
 using System;
 using Microsoft.AspNetCore.Mvc;
-using ContentManagerBFF.Domain.Models;
 using ContentManagerBFF.Domain.Repositories;
 using ContentManagerBFF.WebSocketHelpers;
+using ContentClient.Models;
 
 namespace ContentManagerBFF
 {
@@ -24,7 +24,7 @@ namespace ContentManagerBFF
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors();
-            services.AddScoped<IRepository<Person>, TestPersonRepository>();
+            services.AddScoped<IRepository<Person>, PersonRepository>();
             services.AddSingleton<Configuration>();
             services.Configure<FormOptions>(x =>
             {

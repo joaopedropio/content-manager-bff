@@ -1,4 +1,4 @@
-﻿using ContentManagerBFF.Domain.Models;
+﻿using ContentClient.Models;
 using ContentManagerBFF.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -16,15 +16,28 @@ namespace ContentManagerBFF.Controllers
         }
 
         [Route("/api/person")]
+        [HttpGet]
+        public async Task<IEnumerable<Person>> Get()
+        {
+            return await this.Persons.List();
+        }
+
+        [Route("/api/person/{*personId}")]
+        [HttpGet]
+        public async Task<Person> Get(uint personId)
+        {
+            return await this.Persons.FindById(personId);
+        }
+
+        [Route("/api/person")]
         [HttpPost]
         public async Task<IEnumerable<Person>> Post([FromBody] Person personModel)
         {
-            var persons = await this.Persons.List();
-            personModel.Id = uint.Parse(persons.Count.ToString());
             await this.Persons.Insert(personModel);
             return await this.Persons.List();
         }
 
+        [Route("/api/person/{*personId}")]
         [HttpDelete]
         public async Task<IEnumerable<Person>> Delete(uint personId)
         {
