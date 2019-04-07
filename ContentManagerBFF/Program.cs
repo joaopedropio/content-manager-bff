@@ -11,7 +11,7 @@ namespace ContentManagerBFF
 
             var web = WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseKestrel(options => options.Limits.MaxRequestBodySize = null)
+                //.UseKestrel(options => options.Limits.MaxRequestBodySize = null)
                 .UseUrls(config.URL)
                 .Build();
 
