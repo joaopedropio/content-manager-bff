@@ -1,0 +1,8 @@
+.vs
+.git
+.gitignore
+out
+bin
+obj
+docker-compose.yml
+*.user
