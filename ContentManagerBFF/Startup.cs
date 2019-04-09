@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http.Features;
 using System;
 using Microsoft.AspNetCore.Mvc;
 using ContentManagerBFF.Domain.Repositories;
-using ContentManagerBFF.WebSocketHelpers;
 using ContentClient.Models;
 
 namespace ContentManagerBFF
@@ -22,8 +21,13 @@ namespace ContentManagerBFF
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddCors();
+            services.AddCors(o => o.AddPolicy("FreeForAll", builder =>
+            {
+                builder.AllowAnyHeader()
+                       .AllowAnyMethod()
+                       .AllowAnyOrigin()
+                       .AllowCredentials();
+            }));
             services.AddScoped<IRepository<Person>, PersonRepository>();
             services.AddSingleton<Configuration>();
             services.Configure<FormOptions>(x =>
@@ -31,7 +35,10 @@ namespace ContentManagerBFF
                 x.ValueLengthLimit = int.MaxValue;
                 x.MultipartBodyLengthLimit = long.MaxValue;
             });
-            services.AddWebSocketManager();
+
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //services.AddWebSocketManager();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
@@ -41,15 +48,11 @@ namespace ContentManagerBFF
                 app.UseDeveloperExceptionPage();
             }			
 			
-            app.UseWebSockets();
+            //app.UseWebSockets();
 
-            app.MapWebSocketManager("/ws", serviceProvider.GetService<ProcessMessageHandler>());
+            //app.MapWebSocketManager("/ws", serviceProvider.GetService<ProcessMessageHandler>());
 
-            app.UseCors(option => {
-                option.AllowAnyOrigin();
-                option.AllowAnyHeader();
-                option.AllowAnyMethod();
-            });
+            app.UseCors("FreeForAll");
 
             app.UseMvcWithDefaultRoute();
         }
