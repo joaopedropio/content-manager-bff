@@ -1,5 +1,6 @@
 ﻿using ContentClient.Models;
 using ContentManagerBFF.Domain.Repositories;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace ContentManagerBFF.Controllers
             this.Persons = persons;
         }
 
+        [EnableCors]
         [Route("/api/person")]
         [HttpGet]
         public async Task<IEnumerable<Person>> Get()
@@ -22,6 +24,7 @@ namespace ContentManagerBFF.Controllers
             return await this.Persons.List();
         }
 
+        [EnableCors]
         [Route("/api/person/{*personId}")]
         [HttpGet]
         public async Task<Person> Get(uint personId)
@@ -29,6 +32,7 @@ namespace ContentManagerBFF.Controllers
             return await this.Persons.FindById(personId);
         }
 
+        [EnableCors]
         [Route("/api/person")]
         [HttpPost]
         public async Task<IEnumerable<Person>> Post([FromBody] Person personModel)
@@ -37,6 +41,7 @@ namespace ContentManagerBFF.Controllers
             return await this.Persons.List();
         }
 
+        [EnableCors]
         [Route("/api/person/{*personId}")]
         [HttpDelete]
         public async Task<IEnumerable<Person>> Delete(uint personId)
