@@ -21,7 +21,7 @@ namespace ContentManagerBFF
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(o => o.AddPolicy("FreeForAll", builder =>
+            services.AddCors(o => o.AddDefaultPolicy(builder =>
             {
                 builder.AllowAnyHeader()
                        .AllowAnyMethod()
@@ -52,7 +52,7 @@ namespace ContentManagerBFF
 
             //app.MapWebSocketManager("/ws", serviceProvider.GetService<ProcessMessageHandler>());
 
-            app.UseCors("FreeForAll");
+            app.UseCors();
 
             app.UseMvcWithDefaultRoute();
         }
