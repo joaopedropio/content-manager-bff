@@ -14,7 +14,7 @@ namespace ContentManagerBFF.Controllers
             this.client = new ContentClient.ContentClient(contentApiUrl);
         }
 
-        [Route("/mediafiles")]
+        [Route("/api/mediafiles")]
         [HttpGet]
         public async Task<IEnumerable<string>> Get()
         {
