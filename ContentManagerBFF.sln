@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentManagerBFF", "ContentManagerBFF\ContentManagerBFF.csproj", "{9BE533DF-B2FA-45FE-9D51-563176D51850}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentManagerBFFTests", "ContentManagerBFFTests\ContentManagerBFFTests.csproj", "{BF5CD723-E976-4E9B-8B5E-1EB5C1EAD6A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9BE533DF-B2FA-45FE-9D51-563176D51850}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BE533DF-B2FA-45FE-9D51-563176D51850}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BE533DF-B2FA-45FE-9D51-563176D51850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF5CD723-E976-4E9B-8B5E-1EB5C1EAD6A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF5CD723-E976-4E9B-8B5E-1EB5C1EAD6A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF5CD723-E976-4E9B-8B5E-1EB5C1EAD6A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF5CD723-E976-4E9B-8B5E-1EB5C1EAD6A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

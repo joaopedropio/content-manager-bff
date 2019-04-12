@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 namespace ContentManagerBFF.Controllers
 {
+    [Produces("application/json")]
     public class MediaFilesController : Controller
     {
         private ContentClient.ContentClient client;

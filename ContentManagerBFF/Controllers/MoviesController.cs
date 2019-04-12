@@ -2,6 +2,7 @@
 
 namespace ContentManagerBFF.Controllers
 {
+    [Produces("application/json")]
     [Route("/dashtest")]
     public class DashTestController : Controller
     {

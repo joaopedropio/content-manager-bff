@@ -29,6 +29,7 @@ namespace ContentManagerBFF
                        .AllowCredentials();
             }));
             services.AddScoped<IRepository<Person>, PersonRepository>();
+            services.AddScoped<IRepository<Media>, MediaRepository>();
             services.AddSingleton<Configuration>();
             services.Configure<FormOptions>(x =>
             {

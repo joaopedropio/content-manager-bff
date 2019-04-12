@@ -7,15 +7,17 @@ namespace ContentManagerBFF
     {
         public static void Main(string[] args)
         {
+            CreateWebHostBuilder(args).Build().Run();
+        }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args = null)
+        {
             var config = new Configuration();
 
-            var web = WebHost.CreateDefaultBuilder(args)
+            return WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 //.UseKestrel(options => options.Limits.MaxRequestBodySize = null)
-                .UseUrls(config.URL)
-                .Build();
-
-            web.Run();
+                .UseUrls(config.URL);
         }
     }
 }

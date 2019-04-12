@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ContentManagerBFF.Controllers
 {
+    [Produces("application/json")]
     public class PersonController : Controller
     {
         public IRepository<Person> Persons { get; }
