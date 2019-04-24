@@ -19,7 +19,11 @@ namespace ContentManagerBFF.Controllers
         [HttpGet]
         public async Task<IEnumerable<string>> Get()
         {
-            return await this.client.GetMediaFilesPaths();
+            var x = await this.client.GetMediaFilesPaths();
+            if (x == null || x?.Count == 0)
+                return new List<string>();
+
+            return x;
         }
     }
 }

@@ -29,7 +29,7 @@ namespace ContentManagerBFF
         {
             // Url
             this.Domain = configuration.GetValue<string>("API_DOMAIN") ?? "*";
-            this.Port = configuration.GetValue<string>("API_PORT") ?? "5000";
+            this.Port = configuration.GetValue<string>("API_PORT") ?? "80";
             this.URL = string.Format($"http://{this.Domain}:{this.Port}");
 
             // Content API
